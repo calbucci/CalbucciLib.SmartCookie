@@ -11,7 +11,7 @@ using System.Web;
 namespace CalbucciLib
 {
 
-	public class SmartCookie
+	public abstract class SmartCookie
 	{
 		/// <summary>
 		/// HttpContextBase of the Current Request & Response

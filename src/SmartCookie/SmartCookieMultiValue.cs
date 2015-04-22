@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace CalbucciLib
 {
-	public class SmartCookieMultiValue
+	public abstract class SmartCookieMultiValue
 	{
 		public SmartCookie SmartCookie { get; internal set; }
 		public string PropertyName { get; internal set; }
