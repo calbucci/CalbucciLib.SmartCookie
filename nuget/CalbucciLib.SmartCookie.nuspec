@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>CalbucciLib.SmartCookie</id>
+        <version>0.1.0</version>
+        <title>SmartCookie (HTTP Cookies wrapper)</title>
+        <authors>Marcelo Calbucci</authors>
+        <projectUrl>http://github.com/calbucci/CalbucciLib.SmartCookie</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>The easiest way to read/write HTTP Cookies as POCO classes (open source: http://github.com/calbucci/CalbucciLib.SmartCookie).</description>
+    </metadata>
+    <files>
+        <file src="..\src\SmartCookie\bin\Release\SmartCookie.dll" target="lib\net45\SmartCookie.dll" />
+    </files>
+</package>
