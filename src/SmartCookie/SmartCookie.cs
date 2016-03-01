@@ -38,11 +38,11 @@ namespace CalbucciLib
 		/// <summary>
 		/// Maximum value length allowed for a whole cookie (default is 2048)
 		/// </summary>
-		static public int AutoTruncateCookieValueLength { get; set; }
+		public static int AutoTruncateCookieValueLength { get; set; }
 		/// <summary>
 		/// Maximum value length allowed for a multi-value cookie (default is 512)
 		/// </summary>
-		static public int AutoTruncateCookieMultiValueLength { get; set; }
+		public static int AutoTruncateCookieMultiValueLength { get; set; }
 
 
 		private List<SmartCookieMultiValue> _MultiValuesCookies;
@@ -189,7 +189,7 @@ namespace CalbucciLib
 		// Cookie Settings
 		//
 		// ====================================================================
-		static private Dictionary<string, SmartCookieSettingsAttribute> ProcessTypeSettings(Type type)
+		private static Dictionary<string, SmartCookieSettingsAttribute> ProcessTypeSettings(Type type)
 		{
 			bool isSmartCookieMultiValue = type.IsSubclassOf(typeof(SmartCookieMultiValue));
 			var typeSettings = new Dictionary<string, SmartCookieSettingsAttribute>();
@@ -523,7 +523,7 @@ namespace CalbucciLib
 		// Standard Conversion
 		//
 		// ====================================================================
-		static internal string ConvertToString(DateTime? dateTime)
+		internal static string ConvertToString(DateTime? dateTime)
 		{
 			if (!dateTime.HasValue)
 				return null;
@@ -531,17 +531,17 @@ namespace CalbucciLib
 			return dateTime.Value.ToString("s");
 		}
 
-		static internal string ConvertToString(bool boolean)
+		internal static string ConvertToString(bool boolean)
 		{
 			return boolean ? "1" : "0";
 		}
 
-		static internal string ConvertToString(double dvalue)
+		internal static string ConvertToString(double dvalue)
 		{
 			return dvalue.ToString("R");
 		}
 
-		static internal int ConvertToInt(string value)
+		internal static int ConvertToInt(string value)
 		{
 			if (string.IsNullOrWhiteSpace(value))
 				return 0;
@@ -551,7 +551,7 @@ namespace CalbucciLib
 			return ret;
 		}
 
-		static internal long ConvertToLong(string value)
+		internal static long ConvertToLong(string value)
 		{
 			if (string.IsNullOrWhiteSpace(value))
 				return 0;
@@ -561,7 +561,7 @@ namespace CalbucciLib
 			return ret;
 		}
 
-		static internal double ConvertToDouble(string value)
+		internal static double ConvertToDouble(string value)
 		{
 			if (string.IsNullOrWhiteSpace(value))
 				return 0;
@@ -572,7 +572,7 @@ namespace CalbucciLib
 		}
 
 
-		static internal DateTime? ConvertToDateTime(string value)
+		internal static DateTime? ConvertToDateTime(string value)
 		{
 			if (string.IsNullOrWhiteSpace(value))
 				return null;
@@ -589,7 +589,7 @@ namespace CalbucciLib
 			}
 		}
 
-		static internal bool ConvertToBool(string value)
+		internal static bool ConvertToBool(string value)
 		{
 			if (string.IsNullOrWhiteSpace(value))
 				return false;
