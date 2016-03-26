@@ -385,8 +385,10 @@ namespace CalbucciLib
 			string cookieName = ConvertPropertyNameToCookieName(cookiePropertyName);
 			var mvSetting = ConvertValuePropertyNameToCookieValueName(multiValueType, valuePropertyName);
 
-			// Try the response first
-			var cookie = Harmless_Get(Context.Response.Cookies, cookieName);
+            // Try the response first
+            var cookie = (!Context.IsWebSocketRequest && Context.Response != null) 
+                ? Harmless_Get(Context.Response.Cookies, cookieName) 
+                : null;
 			if (cookie == null)
 			{
 				cookie = CreateRawCookie(cookiePropertyName);
@@ -441,17 +443,20 @@ namespace CalbucciLib
 
 			var cookieName = ConvertPropertyNameToCookieName(propertyName);
 
-			var resp = Context.Response;
-			if (resp != null)
-			{
-				var cookie = Harmless_Get(resp.Cookies, cookieName);
-				if (cookie != null)
-				{
-					return cookie;
-				}
-			}
+		    if (!Context.IsWebSocketRequest)
+		    {
+		        var resp = Context.Response;
+		        if (resp != null)
+		        {
+		            var cookie = Harmless_Get(resp.Cookies, cookieName);
+		            if (cookie != null)
+		            {
+		                return cookie;
+		            }
+		        }
+		    }
 
-			var req = Context.Request;
+		    var req = Context.Request;
 			if (req != null)
 			{
 				var cookie = Harmless_Get(req.Cookies, cookieName);
@@ -503,7 +508,7 @@ namespace CalbucciLib
 
 		private void Internal_SetResponseCookie(HttpCookie cookie)
 		{
-			if (Context == null || Context.Response == null)
+			if (Context == null || Context.IsWebSocketRequest || Context.Response == null)
 				return;
 
 			var cookies = Context.Response.Cookies;
